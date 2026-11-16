@@ -6,12 +6,23 @@ import { CandidateList } from '../components/CandidateList';
 
 export const CandidatesPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [favoriteIds, setFavoriteIds] = useState<number[]>([]);
 
   const normalizedTerm = searchTerm.trim().toLowerCase();
 
   const filteredCandidates = candidates.filter((candidate) =>
     `${candidate.name} ${candidate.city}`.toLowerCase().includes(normalizedTerm),
   );
+
+  const handleToggleFavorite = (id: number) => {
+    setFavoriteIds((currentIds) => {
+      if (currentIds.includes(id)) {
+        return currentIds.filter((favoriteId) => favoriteId !== id);
+      }
+
+      return [...currentIds, id];
+    });
+  };
 
   return (
     <section>
@@ -31,8 +42,8 @@ export const CandidatesPage = () => {
       {filteredCandidates.length > 0 ? (
         <CandidateList
           candidates={filteredCandidates}
-          favoriteIds={[]}
-          onToggleFavorite={() => undefined}
+          favoriteIds={favoriteIds}
+          onToggleFavorite={handleToggleFavorite}
         />
       ) : (
         <p className="candidates-page-empty">
