@@ -1,17 +1,12 @@
-import { candidates } from './data/candidates';
 import { Header } from './components/Header';
-import { CandidateList } from './components/CandidateList';
+import { CandidatesPage } from './pages/CandidatesPage';
 
 const App = () => {
   return (
     <div>
       <Header />
       <main className="container">
-        <CandidateList
-          candidates={candidates}
-          favoriteIds={[]}
-          onToggleFavorite={() => undefined}
-        />
+        <CandidatesPage />
       </main>
     </div>
   );
