@@ -1,15 +1,15 @@
 import { candidates } from './data/candidates';
 import { Header } from './components/Header';
-import { CandidateCard } from './components/CandidateCard';
+import { CandidateList } from './components/CandidateList';
 
 const App = () => {
   return (
     <div>
       <Header />
       <main className="container">
-        <CandidateCard
-          candidate={candidates[0]}
-          isFavorite={false}
+        <CandidateList
+          candidates={candidates}
+          favoriteIds={[]}
           onToggleFavorite={() => undefined}
         />
       </main>
