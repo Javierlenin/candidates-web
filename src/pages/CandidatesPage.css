@@ -1,0 +1,25 @@
+.candidates-page-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 2rem 0 1rem;
+}
+
+.candidates-page-title {
+  font-size: 1.75rem;
+}
+
+.candidates-page-count {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+.candidates-page-empty {
+  margin-top: 2rem;
+  color: var(--color-muted);
+}
+
+.search-bar {
+  margin-bottom: 1.25rem;
+}
