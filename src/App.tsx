@@ -1,8 +1,19 @@
+import { candidates } from './data/candidates';
+import { Header } from './components/Header';
+import { CandidateCard } from './components/CandidateCard';
+
 const App = () => {
   return (
-    <main className="container">
-      <h1>TalentHub</h1>
-    </main>
+    <div>
+      <Header />
+      <main className="container">
+        <CandidateCard
+          candidate={candidates[0]}
+          isFavorite={false}
+          onToggleFavorite={() => undefined}
+        />
+      </main>
+    </div>
   );
 };
 

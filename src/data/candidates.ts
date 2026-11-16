@@ -13,7 +13,7 @@ export const candidates: Candidate[] = [
     name: 'Juan Pérez',
     email: 'juan@correo.com',
     city: 'Guayaquil',
-    experienceYears: 3,
+    experienceYears: 0,
     skills: ['JavaScript', 'React'],
 },
 { 
@@ -21,7 +21,7 @@ export const candidates: Candidate[] = [
     name: 'María López',
     email: 'maria@correo.com',
     city: 'Cuenca',
-    experienceYears: 4,
+    experienceYears: 1,
     skills: ['Python', 'Django'],
 },
 { 
@@ -30,7 +30,7 @@ export const candidates: Candidate[] = [
     email: 'luis@correo.com',
     city: 'Quito',
     experienceYears: 5,
-    skills: ['TypeScript', 'SQL'],
+    skills: [],
 },
 { 
     id: 5,
