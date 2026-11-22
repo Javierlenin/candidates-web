@@ -30,17 +30,8 @@ export const CandidateCard = ({
       <p className="candidate-card-city">{candidate.city}</p>
       <p className="candidate-card-email">{candidate.email}</p>
       <p className="candidate-card-experience">
-        {formatExperience(candidate.experienceYears)}
+        {formatExperience(candidate.experience_years)}
       </p>
-      {candidate.skills.length > 0 && (
-        <ul className="candidate-card-skills">
-          {candidate.skills.map((skill) => (
-            <li key={skill} className="candidate-card-skill">
-              {skill}
-            </li>
-          ))}
-        </ul>
-      )}
       <button
         type="button"
         className={

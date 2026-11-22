@@ -21,23 +21,6 @@
   overflow-wrap: anywhere;
 }
 
-.candidate-card-skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 1rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.candidate-card-skill {
-  padding: 2px 0.75rem;
-  font-size: 0.875rem;
-  color: var(--color-primary);
-  background: #e4f1f4;
-  border-radius: 999px;
-}
-
 .favorite-button {
   width: 100%;
   margin-top: 1rem;
