@@ -18,7 +18,7 @@ export const CandidatesPage = () => {
         setCandidates(await getCandidates());
       } catch {
         setErrorMessage(
-          'No se logró cargar los candidatos. Intente de nuevo más tarde',
+          'No se pudieron cargar los candidatos. Intente de nuevo más tarde.',
         );
       } finally {
         setIsLoading(false);

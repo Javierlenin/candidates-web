@@ -1,8 +1,7 @@
 export interface Candidate {
-    id: number;
-    name: string;
-    email: string;
-    city: string;
-    experienceYears: number;
-    skills: string[];
-  }
+  id: number;
+  name: string;
+  email: string;
+  city: string;
+  experience_years: number;
+}
