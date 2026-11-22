@@ -1,12 +1,32 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './CandidatesPage.css';
 import { SearchBar } from '../components/SearchBar';
-import { candidates } from '../data/candidates';
 import { CandidateList } from '../components/CandidateList';
+import type { Candidate } from '../types/candidate';
+import { getCandidates } from '../services/candidateService';
 
 export const CandidatesPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [candidates, setCandidates] = useState<Candidate[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
   const [favoriteIds, setFavoriteIds] = useState<number[]>([]);
+
+  useEffect(() => {
+    const loadCandidates = async () => {
+      try {
+        setCandidates(await getCandidates());
+      } catch {
+        setErrorMessage(
+          'No se logró cargar los candidatos. Intente de nuevo más tarde',
+        );
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadCandidates();
+  }, []);
 
   const normalizedTerm = searchTerm.trim().toLowerCase();
 
@@ -24,14 +44,46 @@ export const CandidatesPage = () => {
     });
   };
 
+  const renderContent = () => {
+    if (isLoading) {
+      return <p className="candidates-page-status">Cargando candidatos...</p>;
+    }
+
+    if (errorMessage) {
+      return (
+        <p className="candidates-page-status candidates-page-error" role="alert">
+          {errorMessage}
+        </p>
+      );
+    }
+
+    if (filteredCandidates.length === 0) {
+      return (
+        <p className="candidates-page-empty">
+          No se encontraron candidatos con ese término
+        </p>
+      );
+    }
+
+    return (
+      <CandidateList
+        candidates={filteredCandidates}
+        favoriteIds={favoriteIds}
+        onToggleFavorite={handleToggleFavorite}
+      />
+    );
+  };
+
   return (
     <section>
       <div className="candidates-page-header">
         <h2 className="candidates-page-title">Candidatos</h2>
-        <p className="candidates-page-count">
-          {filteredCandidates.length}{' '}
-          {filteredCandidates.length === 1 ? 'resultado' : 'resultados'}
-        </p>
+        {!isLoading && !errorMessage && (
+          <p className="candidates-page-count">
+            {filteredCandidates.length}{' '}
+            {filteredCandidates.length === 1 ? 'resultado' : 'resultados'}
+          </p>
+        )}
       </div>
       <SearchBar
         value={searchTerm}
@@ -39,17 +91,7 @@ export const CandidatesPage = () => {
         placeholder="Buscar por nombre o ciudad"
         label="Buscar candidatos"
       />
-      {filteredCandidates.length > 0 ? (
-        <CandidateList
-          candidates={filteredCandidates}
-          favoriteIds={favoriteIds}
-          onToggleFavorite={handleToggleFavorite}
-        />
-      ) : (
-        <p className="candidates-page-empty">
-          No se encontraron candidatos con ese término
-        </p>
-      )}
+      {renderContent()}
     </section>
   );
 };
