@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import type { Candidate } from '../types/candidate';
 import './CandidateCard.css';
 
@@ -26,7 +27,11 @@ export const CandidateCard = ({
 }: CandidateCardProps) => {
   return (
     <article className="candidate-card">
-      <h3 className="candidate-card-name">{candidate.name}</h3>
+      <h3 className="candidate-card-name">
+        <Link to={`/candidates/${candidate.id}`} className="candidate-card-name-link">
+          {candidate.name}
+        </Link>
+      </h3>
       <p className="candidate-card-city">{candidate.city}</p>
       <p className="candidate-card-email">{candidate.email}</p>
       <p className="candidate-card-experience">

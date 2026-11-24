@@ -4,4 +4,5 @@ export interface Candidate {
   email: string;
   city: string;
   experience_years: number;
+  skills?: string[];
 }

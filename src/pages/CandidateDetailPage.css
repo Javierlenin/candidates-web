@@ -1,0 +1,56 @@
+.candidate-detail {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+
+.candidate-detail-name {
+  font-size: 1.75rem;
+}
+
+.candidate-detail-city,
+.candidate-detail-email,
+.candidate-detail-experience {
+  margin-top: 0.25rem;
+  color: var(--color-muted);
+}
+
+.candidate-detail-email {
+  overflow-wrap: anywhere;
+}
+
+.candidate-detail-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.candidate-detail-skill {
+  padding: 2px 0.75rem;
+  font-size: 0.875rem;
+  color: var(--color-primary);
+  background: #e4f1f4;
+  border-radius: 999px;
+}
+
+.candidate-detail-back {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.candidate-detail-status {
+  margin-top: 2rem;
+  color: var(--color-muted);
+}
+
+.candidate-detail-error {
+  color: var(--color-danger);
+}
