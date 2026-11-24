@@ -1,11 +1,21 @@
+import { Link, NavLink } from 'react-router';
 import './Header.css';
 
 export const Header = () => {
   return (
     <header className="header">
       <div className="container header-content">
-        <span className="header-brand">TalentHub</span>
-        <span className="header-tagline">Candidatos</span>
+        <Link to="/" className="header-brand">
+          TalentHub
+        </Link>
+        <NavLink
+          to="/candidates"
+          className={({ isActive }) =>
+            isActive ? 'header-link header-link-active' : 'header-link'
+          }
+        >
+          Candidatos
+        </NavLink>
       </div>
     </header>
   );

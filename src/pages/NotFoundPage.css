@@ -1,0 +1,7 @@
+.not-found-page a {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
